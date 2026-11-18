@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Princess Day, Baccha</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#fde4ef;--bg2:#fff0e0;--bg3:#e6dcff;
+  --card:rgba(255,255,255,.82);--ink:#4a2a45;--soft:#8a6a85;
+  --pink:#e8478b;--rose:#f7a8c8;--gold:#d9a441;--lav:#b9a3f0;
+  --shadow:0 18px 50px rgba(190,90,150,.18);
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg1:#2a1530;--bg2:#2f1a2c;--bg3:#1f1a3d;
+    --card:rgba(52,30,58,.85);--ink:#ffe9f4;--soft:#d3aecb;
+    --shadow:0 18px 50px rgba(0,0,0,.45);color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg1:#2a1530;--bg2:#2f1a2c;--bg3:#1f1a3d;
+  --card:rgba(52,30,58,.85);--ink:#ffe9f4;--soft:#d3aecb;
+  --shadow:0 18px 50px rgba(0,0,0,.45);color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{
+  font-family:"Quicksand",system-ui,sans-serif;color:var(--ink);
+  background:linear-gradient(135deg,var(--bg1),var(--bg2) 50%,var(--bg3));
+  background-color:var(--bg1);
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+}
+.fall{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.fall span{position:absolute;top:-10%;font-size:18px;opacity:.7;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(115vh) rotate(360deg)}}
+main{position:relative;width:min(92vw,440px);padding:16px}
+.screen{display:none;background:var(--card);backdrop-filter:blur(8px);border-radius:28px;padding:30px 24px 24px;box-shadow:var(--shadow);text-align:center}
+.screen.on{display:block;animation:pop .45s ease}
+@keyframes pop{from{opacity:0;transform:scale(.96) translateY(10px)}}
+h1,h2{font-family:"Playfair Display",Georgia,serif;line-height:1.15;color:var(--pink)}
+h1{font-size:clamp(2.4rem,11vw,3.2rem);font-style:italic}
+h2{font-size:1.65rem;font-style:italic}
+.date{font-size:.8rem;color:var(--gold);font-weight:600;margin-bottom:10px}
+p{line-height:1.65;color:var(--soft);margin-top:12px}
+.big{font-size:4.2rem;margin:10px 0 0}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+button{font:inherit;font-weight:600;border:0;border-radius:999px;padding:11px 20px;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--pink),#f5709f);box-shadow:0 8px 20px rgba(232,71,139,.3)}
+button.ghost{background:rgba(185,163,240,.25);color:var(--ink);box-shadow:none}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.solo{margin-top:22px}
+.gifts{display:flex;justify-content:center;gap:10px;font-size:2.3rem;margin-top:14px;flex-wrap:wrap}
+.slot{width:130px;height:110px;margin:18px auto 6px;border:2px dashed var(--lav);border-radius:50%/60%;display:flex;align-items:center;justify-content:center;font-size:3.2rem;transition:.4s}
+.slot.full{border-style:solid;border-color:var(--gold);background:rgba(217,164,65,.15);animation:glow 1.6s ease infinite}
+@keyframes glow{50%{box-shadow:0 0 30px rgba(217,164,65,.7)}}
+.tray{font-size:3rem;cursor:grab;background:none;box-shadow:none;padding:6px 14px;color:inherit;touch-action:none}
+.tray.drag{cursor:grabbing;position:fixed;z-index:9}
+.hint{font-size:.85rem}
+.reveal{opacity:0;transition:opacity .8s}
+.reveal.on{opacity:1}
+.letter{text-align:left}
+.letter h2{text-align:center}
+.letter p{color:var(--ink)}
+.sign{font-family:"Playfair Display",Georgia,serif;font-style:italic;color:var(--pink);font-size:1.2rem;text-align:right;margin-top:16px}
+.ticket{border:2px solid var(--gold);border-radius:20px;padding:18px;margin-top:16px;background:rgba(255,255,255,.35)}
+.ticket .row{display:flex;justify-content:space-between;font-size:.8rem;color:var(--soft);font-weight:600}
+.ticket .row b{color:var(--ink)}
+.foryou{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--pink);margin:14px 0 4px}
+.stamp{font-size:.8rem;color:var(--pink);margin-top:10px}
+.hearts{position:fixed;inset:0;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.fall span,.slot.full{animation:none}.screen.on{animation:none}}
+</style>
+</head>
+<body>
+<div class="fall" id="fall" aria-hidden="true"></div>
+<main>
+
+<section class="screen on" data-step="0">
+  <div class="date">👑 November 18</div>
+  <h1>Happy Princess Day, Baccha!</h1>
+  <div class="big" aria-hidden="true">🎀</div>
+  <p>Today the whole kingdom celebrates you. I made this little royal world just for you, to wrap your special day in sparkles, flowers and all my love. 💕</p>
+  <button class="solo" data-go="1">Enter the Palace</button>
+</section>
+
+<section class="screen" data-step="1">
+  <div class="date">🎁 A gift for you</div>
+  <h2>Gifts for my Princess</h2>
+  <div class="gifts" aria-hidden="true"><span>🧸</span><span>💐</span><span>🍫</span><span>🎁</span><span>🌸</span></div>
+  <p>Every gift is wrapped in a little bit of my heart, because you deserve every sweet thing in the world.</p>
+  <p class="sign">with all my love, Crescent</p>
+  <div class="nav"><button class="ghost" data-go="0">Back</button><button data-go="2">Next</button></div>
+</section>
+
+<section class="screen" data-step="2">
+  <h2 id="crownTitle">Baccha, one crown is missing. Place it on the princess.</h2>
+  <div class="slot" id="slot" aria-live="polite"><span id="face">👸</span></div>
+  <button class="tray" id="crown" aria-label="Place the crown">👑</button>
+  <p class="hint" id="hint">Drag the crown up, or just tap it.</p>
+  <h2 class="reveal" id="done" style="margin-top:14px">The crown was always meant for you.</h2>
+  <div class="nav"><button class="ghost" data-go="1">Back</button><button data-go="3" id="next2" disabled style="opacity:.5">Next</button></div>
+</section>
+
+<section class="screen" data-step="3">
+  <div class="date">✦ A royal note</div>
+  <div class="letter">
+    <h2>Just for you ✦</h2>
+    <p style="font-weight:600;color:var(--pink)">To my Baccha,</p>
+    <p>You are the princess of my heart, with the kindest soul, the brightest smile, and a love that makes every ordinary day feel like a fairytale. Thank you for being you. Happy Princess Day. 👑💗</p>
+    <p class="sign">Forever yours, Crescent 💌</p>
+  </div>
+  <div class="nav"><button class="ghost" data-go="2">Back</button><button data-go="4">Next</button></div>
+</section>
+
+<section class="screen" data-step="4">
+  <h2>Royal Surprises ✦</h2>
+  <div class="ticket">
+    <div class="row"><span>FROM: <b>Crescent</b></span><span>TO: <b>Baccha</b></span></div>
+    <div class="foryou">For You</div>
+    <div class="big" style="margin:0" aria-hidden="true">🐱🌸</div>
+    <div class="row" style="margin-top:14px"><span>DATE: <b>November 18</b></span><span>VALID FOR: <b>Forever</b></span></div>
+    <div class="stamp">made with love for my Princess 💗</div>
+  </div>
+  <div class="nav"><button class="ghost" data-go="3">Back</button><button data-go="5">Next</button></div>
+</section>
+
+<section class="screen" data-step="5">
+  <div class="big" style="margin:0" aria-hidden="true">👑</div>
+  <h1 style="font-size:clamp(2.2rem,10vw,2.9rem)">My Princess</h1>
+  <h2 style="font-size:1.1rem;font-style:normal;color:var(--ink);margin-top:6px">Forever &amp; always ❤️</h2>
+  <p>If you smiled even once while going through this, it was all worth it. May your day be as magical as you make my life, Baccha. Happy Princess Day, my love.</p>
+  <p class="sign">made with 💗, crowns, and a whole kingdom of love</p>
+  <div class="nav"><button class="ghost" data-go="4">Back</button><button id="replay">Replay</button></div>
+</section>
+
+</main>
+<script>
+(function(){
+  var screens=[].slice.call(document.querySelectorAll(".screen"));
+  function go(n){
+    screens.forEach(function(s,i){s.classList.toggle("on",i===n)});
+    if(n===5)burst();
+  }
+  document.addEventListener("click",function(e){
+    var b=e.target.closest("[data-go]");
+    if(b)go(+b.getAttribute("data-go"));
+  });
+  document.getElementById("replay").addEventListener("click",function(){reset();go(0)});
+
+  // falling petals and hearts
+  var fall=document.getElementById("fall"),em=["🌸","💗","✨","🎀","💖"];
+  for(var i=0;i<14;i++){
+    var s=document.createElement("span");
+    s.textContent=em[i%em.length];
+    s.style.left=Math.random()*100+"%";
+    s.style.animationDuration=(9+Math.random()*10)+"s";
+    s.style.animationDelay=(-Math.random()*14)+"s";
+    s.style.fontSize=(14+Math.random()*14)+"px";
+    fall.appendChild(s);
+  }
+
+  // crown puzzle
+  var crown=document.getElementById("crown"),slot=document.getElementById("slot"),
+      face=document.getElementById("face"),done=document.getElementById("done"),
+      next=document.getElementById("next2"),hint=document.getElementById("hint"),
+      title=document.getElementById("crownTitle"),placed=false;
+  function place(){
+    if(placed)return;
+    placed=true;
+    face.textContent="👸";
+    slot.classList.add("full");
+    face.textContent="👑";
+    crown.style.visibility="hidden";
+    hint.style.display="none";
+    title.style.display="none";
+    done.classList.add("on");
+    next.disabled=false;next.style.opacity=1;
+    burst();
+  }
+  function reset(){
+    placed=false;
+    face.textContent="👸";
+    slot.classList.remove("full");
+    crown.style.visibility="visible";crown.className="tray";crown.style.cssText="";
+    hint.style.display="";title.style.display="";
+    done.classList.remove("on");
+    next.disabled=true;next.style.opacity=.5;
+  }
+  var drag=false;
+  crown.addEventListener("click",function(){if(!drag)place()});
+  crown.addEventListener("pointerdown",function(e){
+    drag=false;
+    var sx=e.clientX,sy=e.clientY;
+    function mv(ev){
+      if(Math.abs(ev.clientX-sx)+Math.abs(ev.clientY-sy)>8){
+        drag=true;crown.classList.add("drag");
+        crown.style.left=(ev.clientX-24)+"px";crown.style.top=(ev.clientY-24)+"px";
+      }
+    }
+    function up(ev){
+      document.removeEventListener("pointermove",mv);
+      document.removeEventListener("pointerup",up);
+      if(drag){
+        var r=slot.getBoundingClientRect();
+        var hit=ev.clientX>r.left-30&&ev.clientX<r.right+30&&ev.clientY>r.top-40&&ev.clientY<r.bottom+30;
+        if(hit)place();else{crown.className="tray";crown.style.cssText=""}
+        setTimeout(function(){drag=false},0);
+      }
+    }
+    document.addEventListener("pointermove",mv);
+    document.addEventListener("pointerup",up);
+  });
+
+  // little heart burst
+  function burst(){
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+    for(var i=0;i<18;i++){
+      var h=document.createElement("span");
+      h.textContent=["💖","✨","👑","🌸"][i%4];
+      h.style.cssText="position:fixed;left:50%;top:55%;font-size:22px;pointer-events:none;z-index:20;transition:transform 1.4s ease-out,opacity 1.4s";
+      document.body.appendChild(h);
+      (function(h){
+        var a=Math.random()*Math.PI*2,d=90+Math.random()*140;
+        requestAnimationFrame(function(){
+          h.style.transform="translate("+Math.cos(a)*d+"px,"+Math.sin(a)*d+"px)";
+          h.style.opacity="0";
+        });
+        setTimeout(function(){h.remove()},1500);
+      })(h);
+    }
+  }
+})();
+</script>
+</body>
+</html>
